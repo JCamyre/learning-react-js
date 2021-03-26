@@ -22,11 +22,15 @@ module.exports = {
     minimize: true,
   },
   plugins: [
+    // Old code: 
+    // new webpack.DefinePlugin({
+    //   "process.env": {
+    //     // This has effect on the react lib size
+    //     NODE_ENV: JSON.stringify("production"),
+    //   },
+    // }),
     new webpack.DefinePlugin({
-      "process.env": {
-        // This has effect on the react lib size
-        NODE_ENV: JSON.stringify("production"),
-      },
+      'process.env.NODE_ENV' : JSON.stringify('development')
     }),
   ],
 };

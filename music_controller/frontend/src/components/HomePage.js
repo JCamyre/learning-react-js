@@ -11,7 +11,8 @@ export default class HomePage extends Component {
     render() {
         return <Router>
             <Switch>
-                <Route exact path='/'>
+                {/* Otherwise, any path with '/', which is all urls rn, will go to the homepage */}
+                <Route exact path='/'> 
                     <p>This is home page</p>
                 </Route>
                 <Route path='/join' component = {RoomJoinPage}/>

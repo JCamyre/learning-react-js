@@ -1,3 +1,5 @@
 npx create-react-app “[app_name_here]” for anyone wanting to avoid the web-pack/Babel setup. Create react app does this for you. Either way works
 
-Whenever you run server, you have to 'npm run dev' in a seperate terminal
+Whenever you run server, you have to 'npm run dev' in a seperate terminal in '\music_controller\frontend'
+
+Use heroku to deploy

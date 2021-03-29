@@ -14,16 +14,16 @@ class RoomView(generics.ListAPIView):
 class CreateRoomView(APIView): # APIView has very important methods for requests of data from API's
     serializer_class = CreateRoomSerializer
 
-    def post(self, request, format=None):
-        if not self.request.session.exists(self.request.session.session_key):
+    def post(self, request, format=None): # Handles post requests for this specific view/webpage
+        if not self.request.session.exists(self.request.session.session_key): # If host hasn't created a session before or session ran out
             self.request.session.create()
         
-        serializer = self.serializer_class(data=request.data)
+        serializer = self.serializer_class(data=request.data) # Serialize post data
         if serializer.is_valid(): # Check if post data good 
             guest_can_pause = serializer.data.get('guest_can_pause')
             votes_to_skip = serializer.data.get('votes_to_skip')
             host = self.request.session.session_key
-            queryset = Room.objects.filter(host=host) # If a room already exists with a host
+            queryset = Room.objects.filter(host=host) # Check to see if a room already exists with a host
             if queryset.exists():
                 room = queryset[0] # Update the room's information
                 room.guest_can_pause = guest_can_pause 

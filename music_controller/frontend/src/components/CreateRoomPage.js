@@ -48,7 +48,8 @@ export default class CreateRoomPage extends Component {
     };
     fetch("/api/create-room", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      // After creating a room, redirect the user to /room/data.code. The data.code is the room code from the room the host just created. Idk what this.props.history.push() exactly does.
+      .then((data) => this.props.history.push('/room/' + data.code));
   }
 
   render() {
